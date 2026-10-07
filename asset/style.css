@@ -1,0 +1,16 @@
+.block-container {
+    max-width: 800px;
+    padding-top: 3.25rem;
+    padding-bottom: 4rem;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+}
+
+div[data-testid="stForm"] {
+    background: #FFFDF9;
+    border: 1px solid #DED8CD;
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 0.5rem;
+}

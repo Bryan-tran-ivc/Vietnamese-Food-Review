@@ -1,0 +1,197 @@
+{
+  "dataset_url": "https://www.kaggle.com/datasets/guutran/vietnamese-sentiment-analysis-food-reviews",
+  "source_file_sha256": "7a086212982e860d3203a65eb1e316eb0dcf5207f45d889d83d9315cc421ec13",
+  "seed": 42,
+  "cleaning": {
+    "raw_rows": 22847,
+    "valid_rows": 22841,
+    "conflicting_texts_removed": 6,
+    "conflicting_rows_removed": 45,
+    "duplicate_rows_removed": 9883,
+    "clean_rows": 12913,
+    "negative_rows": 3284,
+    "positive_rows": 9629
+  },
+  "split": {
+    "train": 8264,
+    "validation": 2066,
+    "test": 2583,
+    "method": "stratified random 64/16/20 after normalized-text deduplication"
+  },
+  "validation_scores": {
+    "word_logistic_regression": {
+      "accuracy": 0.9051,
+      "macro_f1": 0.8773,
+      "negative_f1": 0.8189,
+      "positive_f1": 0.9357
+    },
+    "word_naive_bayes": {
+      "accuracy": 0.7633,
+      "macro_f1": 0.4957,
+      "negative_f1": 0.1283,
+      "positive_f1": 0.8631
+    },
+    "char_logistic_regression": {
+      "accuracy": 0.8993,
+      "macro_f1": 0.8695,
+      "negative_f1": 0.8071,
+      "positive_f1": 0.9319
+    }
+  },
+  "selection_metric": "validation macro-F1; negative-class F1 as tie breaker",
+  "selected_model": "word_logistic_regression + slang examples (weight 4)",
+  "curated_examples": {
+    "provenance": "Manually written examples for this project; not from Kaggle",
+    "audit": {
+      "train": {
+        "rows": 48,
+        "negative": 24,
+        "positive": 24,
+        "sha256": "f6d8de46d130d66da3a8c34aa3d63d49af7115662632fc006f4b0dac9fcee9c5"
+      },
+      "validation": {
+        "rows": 24,
+        "negative": 12,
+        "positive": 12,
+        "sha256": "8f0bddda70baba84d8d136277bf13455bbf1828435a1e510f4fa408cc251bb48"
+      },
+      "test": {
+        "rows": 24,
+        "negative": 12,
+        "positive": 12,
+        "sha256": "636207ec45cce2c48c3bde51cc0f5078ec2c40b24d760cfcfba01f1247c0f155"
+      }
+    },
+    "augmentation_validation": {
+      "0": {
+        "kaggle_validation": {
+          "accuracy": 0.9051,
+          "macro_f1": 0.8773,
+          "negative_f1": 0.8189,
+          "positive_f1": 0.9357
+        },
+        "slang_validation": {
+          "accuracy": 0.875,
+          "macro_f1": 0.8748,
+          "negative_f1": 0.8696,
+          "positive_f1": 0.88
+        }
+      },
+      "1": {
+        "kaggle_validation": {
+          "accuracy": 0.9051,
+          "macro_f1": 0.877,
+          "negative_f1": 0.8182,
+          "positive_f1": 0.9358
+        },
+        "slang_validation": {
+          "accuracy": 0.9167,
+          "macro_f1": 0.9167,
+          "negative_f1": 0.9167,
+          "positive_f1": 0.9167
+        }
+      },
+      "4": {
+        "kaggle_validation": {
+          "accuracy": 0.9056,
+          "macro_f1": 0.8776,
+          "negative_f1": 0.8189,
+          "positive_f1": 0.9362
+        },
+        "slang_validation": {
+          "accuracy": 0.9167,
+          "macro_f1": 0.9167,
+          "negative_f1": 0.9167,
+          "positive_f1": 0.9167
+        }
+      }
+    },
+    "selection_rule": "Choose the weight with highest slang validation macro-F1 among models whose Kaggle validation macro-F1 falls by no more than 0.005; otherwise retain the baseline.",
+    "selected_weight": 4,
+    "baseline_slang_test_scores": {
+      "accuracy": 0.9167,
+      "macro_f1": 0.9161,
+      "negative_f1": 0.9231,
+      "positive_f1": 0.9091
+    },
+    "selected_slang_test_scores": {
+      "accuracy": 0.9583,
+      "macro_f1": 0.9583,
+      "negative_f1": 0.96,
+      "positive_f1": 0.9565
+    },
+    "slang_test_confusion_matrix": [
+      [
+        12,
+        0
+      ],
+      [
+        1,
+        11
+      ]
+    ],
+    "focus_case": {
+      "text": "quán này ăn quá dở, mình không muốn quay lại nữa",
+      "true_label": "negative",
+      "baseline_negative_probability": 0.8194,
+      "selected_negative_probability": 0.8511
+    }
+  },
+  "baseline_test_scores": {
+    "accuracy": 0.909,
+    "macro_f1": 0.8827,
+    "negative_f1": 0.8271,
+    "positive_f1": 0.9383
+  },
+  "test_scores": {
+    "accuracy": 0.9086,
+    "macro_f1": 0.8822,
+    "negative_f1": 0.8265,
+    "positive_f1": 0.938
+  },
+  "test_confusion_matrix": {
+    "label_order": [
+      "negative",
+      "positive"
+    ],
+    "rows_are_true_labels": true,
+    "values": [
+      [
+        562,
+        95
+      ],
+      [
+        141,
+        1785
+      ]
+    ]
+  },
+  "test_classification_report": {
+    "negative": {
+      "precision": 0.7994310099573257,
+      "recall": 0.8554033485540334,
+      "f1-score": 0.8264705882352941,
+      "support": 657.0
+    },
+    "positive": {
+      "precision": 0.949468085106383,
+      "recall": 0.926791277258567,
+      "f1-score": 0.9379926431949553,
+      "support": 1926.0
+    },
+    "accuracy": 0.9086333720480062,
+    "macro avg": {
+      "precision": 0.8744495475318543,
+      "recall": 0.8910973129063002,
+      "f1-score": 0.8822316157151247,
+      "support": 2583.0
+    },
+    "weighted avg": {
+      "precision": 0.911305344737459,
+      "recall": 0.9086333720480062,
+      "f1-score": 0.9096264062191529,
+      "support": 2583.0
+    }
+  },
+  "evaluation_note": "The Kaggle test split is the same split used in the earlier project version. Augmentation was selected on validation, but these test results are an iterative comparison, not a new external benchmark. The 24 manually written slang test cases are small and synthetic."
+}
